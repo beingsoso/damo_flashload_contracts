@@ -35,20 +35,20 @@ contract PureFlashFactory is SafeOwnable{
   }
 
 
-  function setPool(address valtAddr,address profitpool) onlyOwner public returns(bool){
-    address valt = m_token_valts[valtAddr];
+  function setPool(address token,address profitpool) onlyOwner public returns(bool){
+    address valt = m_token_valts[token];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setPool(profitpool);
   }
   
-  function setProfitRate(address valtAddr,uint256 profitrate) onlyOwner public returns(bool){
-    address valt = m_token_valts[valtAddr];
+  function setProfitRate(address token,uint256 profitrate) onlyOwner public returns(bool){
+    address valt = m_token_valts[token];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setProfitRate(profitrate);
   }
 
-  function setLoanFee(address valtAddr,uint256 loanfee) onlyOwner public returns(bool){
-    address valt = m_token_valts[valtAddr];
+  function setLoanFee(address token,uint256 loanfee) onlyOwner public returns(bool){
+    address valt = m_token_valts[token];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setLoanFee(loanfee);
   }
@@ -56,6 +56,12 @@ contract PureFlashFactory is SafeOwnable{
 
   function valtCount() public view returns(uint256){
     return m_valts.length;
+  }
+
+  function valtInfo(address token) public returns(string memory sym,uint256 tvl,uint256 fee,uint256 apy){
+     address valt = m_token_valts[token];
+    require(valt != address(0),"NO_TOKEN_VALT");
+    return IPureValt(valt).valtInfo();
   }
   //通用存款方法，存入的时候如果没有对应的保险柜，则自动创建
   function deposit(address token,uint256 amount) public{
