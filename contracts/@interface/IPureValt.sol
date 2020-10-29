@@ -1,4 +1,4 @@
-
+//"SPDX-License-Identifier: UNLICENSED" 
 pragma solidity ^0.7.0;
 
 /**
@@ -7,7 +7,7 @@ pragma solidity ^0.7.0;
 interface IPureValt {
     function deposit(uint256 amount) external returns(bool);
     function withdraw(uint256 amount) external returns(bool);
-    function setPool(address valt,address profitpool)  external returns(bool);
-    function setProfitRate(address valt,uint256 profitrate)  external returns(bool);
-    function setLoanFee(address valt,uint256 loanfee)  external returns(bool);
+    function setPool(address profitpool)  external returns(bool);
+    function setProfitRate(uint256 profitrate)  external returns(bool);
+    function setLoanFee(uint256 loanfee)  external returns(bool);
 }

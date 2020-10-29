@@ -1,0 +1,410 @@
+{
+	"compiler": {
+		"version": "0.7.4+commit.3f05b770"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "profitpool",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "profitpool",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "profitrate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "loanfee",
+						"type": "uint256"
+					}
+				],
+				"name": "defaultFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "m_token_valts",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "m_valts",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recvOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "valtAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "loanfee",
+						"type": "uint256"
+					}
+				],
+				"name": "setLoanFee",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "valtAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "profitpool",
+						"type": "address"
+					}
+				],
+				"name": "setPool",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "valtAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "profitrate",
+						"type": "uint256"
+					}
+				],
+				"name": "setProfitRate",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "valtCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"newOwner()": {
+					"details": "Returns the address of the new owner."
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"recvOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner. Note：为了防止控制权转移出错，一定要接收者接收之后才算成功转移控制权"
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/PureFlashFactory.sol": "PureFlashFactory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/@interface/IPureFlash.sol": {
+			"keccak256": "0xba7fe9a3a614911847643392816d7eb048e4166d9b7b58747af3c651eea6adb5",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://eea97949ddbca5246339f2746fb4fbb9398cfe30b99e8a02c8cfe553c518f356",
+				"dweb:/ipfs/QmZ1KpPcSVqnAhbWwEvr9CnfwEhoKhEQzuWMhk34KNczMs"
+			]
+		},
+		"localhost/contracts/@interface/IPureValt.sol": {
+			"keccak256": "0x6e14e31d9d1aca2f56d2260aba3c55024426e1e0ec3c65f143f7da400d745e6f",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://e6504b40779a42434ce26ec871592f2775833c9efa66348bad09d107ca987b95",
+				"dweb:/ipfs/QmZLbUtJpYZc6m4TdAm8pdVQWW1zbdsgPmEEUknL39724n"
+			]
+		},
+		"localhost/contracts/@libs/ERC20Detailed.sol": {
+			"keccak256": "0x7c46afcd0ab736216ba457da2bd880eef2fc2de9300623164c48a24fade8c980",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://1c4886822c73acc09971cdd294ea0ccc77492b9803295f1c5bf255bd3b853717",
+				"dweb:/ipfs/QmPMKJGhKpyJppR52rWKPvdM4qQ1fwUcGcRcoxyBT5rG1L"
+			]
+		},
+		"localhost/contracts/@libs/SafeOwnable.sol": {
+			"keccak256": "0x3b4033d93255bf1480f83f7022a195d6367a23b40906c99a5c73b65977f08940",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3f295a9e6cb38f73ca9ddaafc6f383cf1f01e5882f456bf8077caa0e730b629e",
+				"dweb:/ipfs/QmdFuUAbQpNzfYebZHVDNu1Hj3p6YaZxsYPKVsHotsKVP9"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/GSN/Context.sol": {
+			"keccak256": "0xd12c329e1ca32581411b6bfec2680e1bb7ecbb2eeeece8da51eb5c3f25b3ed67",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a1ef168dcfc49106a5c3443acf00b2d1f3ac7935862e4ea58b92e3f0e3261e5",
+				"dweb:/ipfs/QmaaKMG238m676BK9Z8p4tm6PXwD2SjTv7nmEVVrqhe1f4"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/math/SafeMath.sol": {
+			"keccak256": "0xe173bd90ece9eda06ed31c51dd8a04f11f7c9c2b12ac9e525fb4a24a90230ec5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://29f3322bd650a8a8745694695e753c8debe38ed6567a6ee56ca41b35639e309c",
+				"dweb:/ipfs/QmcLdW2xWLLQksdVWw4c6aqSmpzjr2d5SnKLkvVgUkKcpb"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0x4dfb4f10372152304ce58532ed539fc55ec6e38603e87bbcb3436eaf8f516101",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b7dea2270f5a1710e0fcf27cb71da24d1e9d385ef3b660bf64deca4a9a0e6700",
+				"dweb:/ipfs/QmY2K45VE4ygv6E3tYCTVeE84smWMn3pAQhGXjpYFvfefi"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x32331d18e36cb23f5d8a09bd90f79185cf3ded7891c26d4ded17b2fe37acbb24",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e928037aa26fa275fe058971487dceaf29c8d818edba152c7401b8dde53749e9",
+				"dweb:/ipfs/QmUAJ7jE2B2zA2Lyh3aZxUbXa7tjN4dcaAd6uYcoZXjZ7j"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/token/ERC20/SafeERC20.sol": {
+			"keccak256": "0x33494889e7ea7aba57a3372f604a3c6a7502f1155f3ec1b1030552722c4318c7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e77f097dde396d7a7a27852d4a813ce0c8414a2bfe51d8067b3934b2aa600285",
+				"dweb:/ipfs/QmVh5mx99Sfv942NTchwJfn8PfwyaS2CdCF1Y3ovNxXYKy"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0x2491847d10b07d43ca36716ebc508da0bdc8e3236717dfedb793f22d808a5515",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b61cd2e07b10df989872faf608e179cea60918cb67fe6c25acebeea0704e4d14",
+				"dweb:/ipfs/QmVyAmQs9BrUnFKccJxDCgx2rHScUZhEsZKj1HtADqN6Pq"
+			]
+		},
+		"localhost/contracts/PureFlashFactory.sol": {
+			"keccak256": "0x9406367c506ac6388e43465f95d94c68ef27582109e500e629fa6f0acc40aa6d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c08c4e64575322a6d91fa0f989eabb9b724066fe2f259fa52c11c69ded341798",
+				"dweb:/ipfs/QmeLARMYaRRZs1oGSzbsVgSs6szx4BvRfUFz1HaBFRXb6e"
+			]
+		},
+		"localhost/contracts/PureFlashValt.sol": {
+			"keccak256": "0x226f1a04e22af9b70f55c68dd15e6072127213ffa765d1b3de56cfacd044a10a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5888d5ffc0c82820b5ae2c3897ab374fffdb9f9fd1e8c15e9e0d71fa0c2454d4",
+				"dweb:/ipfs/Qme7yw2R18ZkHD8jrKx9tfun4JbndQHEr7EW9SN2M7pevG"
+			]
+		}
+	},
+	"version": 1
+}

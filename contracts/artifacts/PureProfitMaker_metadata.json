@@ -1,0 +1,248 @@
+{
+	"compiler": {
+		"version": "0.7.4+commit.3f05b770"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "exchange",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenUse",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minOut",
+						"type": "uint256"
+					}
+				],
+				"name": "BuyPFL",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "PFLReFund",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recvOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"newOwner()": {
+					"details": "Returns the address of the new owner."
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"recvOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner. Note：为了防止控制权转移出错，一定要接收者接收之后才算成功转移控制权"
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"PFLReFund(uint256)": {
+					"notice": "社区利润池FEA再流通（多签机制）"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/PureProfitMaker.sol": "PureProfitMaker"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/@interface/IExchange.sol": {
+			"keccak256": "0x0ed8fbae729e50527c4fdbb373637e47b91662e9fa3b07c7fde129c9aaec7224",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://890703d7f3ee5c5d42294f7a2320e4e3293907807852bd76eaf404614acf2c59",
+				"dweb:/ipfs/QmWjQn8NnKp5jwfk25WLAYtGndRG21yV8S1ghLBVZSszyb"
+			]
+		},
+		"localhost/contracts/@libs/SafeOwnable.sol": {
+			"keccak256": "0x3b4033d93255bf1480f83f7022a195d6367a23b40906c99a5c73b65977f08940",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3f295a9e6cb38f73ca9ddaafc6f383cf1f01e5882f456bf8077caa0e730b629e",
+				"dweb:/ipfs/QmdFuUAbQpNzfYebZHVDNu1Hj3p6YaZxsYPKVsHotsKVP9"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/GSN/Context.sol": {
+			"keccak256": "0xd12c329e1ca32581411b6bfec2680e1bb7ecbb2eeeece8da51eb5c3f25b3ed67",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a1ef168dcfc49106a5c3443acf00b2d1f3ac7935862e4ea58b92e3f0e3261e5",
+				"dweb:/ipfs/QmaaKMG238m676BK9Z8p4tm6PXwD2SjTv7nmEVVrqhe1f4"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/math/SafeMath.sol": {
+			"keccak256": "0xe173bd90ece9eda06ed31c51dd8a04f11f7c9c2b12ac9e525fb4a24a90230ec5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://29f3322bd650a8a8745694695e753c8debe38ed6567a6ee56ca41b35639e309c",
+				"dweb:/ipfs/QmcLdW2xWLLQksdVWw4c6aqSmpzjr2d5SnKLkvVgUkKcpb"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x32331d18e36cb23f5d8a09bd90f79185cf3ded7891c26d4ded17b2fe37acbb24",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e928037aa26fa275fe058971487dceaf29c8d818edba152c7401b8dde53749e9",
+				"dweb:/ipfs/QmUAJ7jE2B2zA2Lyh3aZxUbXa7tjN4dcaAd6uYcoZXjZ7j"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/token/ERC20/SafeERC20.sol": {
+			"keccak256": "0x33494889e7ea7aba57a3372f604a3c6a7502f1155f3ec1b1030552722c4318c7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e77f097dde396d7a7a27852d4a813ce0c8414a2bfe51d8067b3934b2aa600285",
+				"dweb:/ipfs/QmVh5mx99Sfv942NTchwJfn8PfwyaS2CdCF1Y3ovNxXYKy"
+			]
+		},
+		"localhost/contracts/@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0x2491847d10b07d43ca36716ebc508da0bdc8e3236717dfedb793f22d808a5515",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b61cd2e07b10df989872faf608e179cea60918cb67fe6c25acebeea0704e4d14",
+				"dweb:/ipfs/QmVyAmQs9BrUnFKccJxDCgx2rHScUZhEsZKj1HtADqN6Pq"
+			]
+		},
+		"localhost/contracts/PureProfitMaker.sol": {
+			"keccak256": "0xf1167f85e662c75f448a3eafec5cfac4d70f08d9ec2c8c7f2e981fc11718432a",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://281345f57015237d865bb76416ae19d5f7763fc501dd38f29cd8fae93f87666a",
+				"dweb:/ipfs/QmcVGMs9hD9r7Z6T9TECBZcQ6k7B8Q1atZ9QXN8oRKZiyB"
+			]
+		}
+	},
+	"version": 1
+}

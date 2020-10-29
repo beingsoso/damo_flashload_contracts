@@ -33,15 +33,15 @@ contract PureFlashValt is ERC20{
        _;
    }
 
-   function setPool(address valt,address profitpool) onlyFactory external returns(bool){
+   function setPool(address profitpool) onlyFactory external returns(bool){
       m_profitpool = profitpool;
      return true;
    }
-   function setProfitRate(address valt,uint256 profitrate) onlyFactory external returns(bool){
+   function setProfitRate(uint256 profitrate) onlyFactory external returns(bool){
        m_profit_rate = profitrate;
        return true;
    }
-   function setLoanFee(address valt,uint256 loanfee)  onlyFactory external returns(bool){
+   function setLoanFee(uint256 loanfee)  onlyFactory external returns(bool){
        m_loan_fee = loanfee;
        return true;
    } 

@@ -8,10 +8,10 @@ import "./@openzeppelin/contracts/math/SafeMath.sol";
 import "./@interface/IPureFlash.sol";
 import "./@interface/IPureValt.sol";
 import "./@libs/SafeOwnable.sol";
+import "./PureFlashValt.sol";
 
 
-
-contract PureFlashValt is SafeOwnable{
+contract PureFlashFactory is SafeOwnable{
  
    address[] public m_valts;
    mapping(address=>address) public m_token_valts;
@@ -35,20 +35,20 @@ contract PureFlashValt is SafeOwnable{
   }
 
 
-  function setPool(address valt,address profitpool) onlyOwner public returns(bool){
-    address valt = m_token_valts[token];
+  function setPool(address valtAddr,address profitpool) onlyOwner public returns(bool){
+    address valt = m_token_valts[valtAddr];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setPool(profitpool);
   }
   
-  function setProfitRate(address valt,uint256 profitrate) onlyOwner public returns(bool){
-    address valt = m_token_valts[token];
+  function setProfitRate(address valtAddr,uint256 profitrate) onlyOwner public returns(bool){
+    address valt = m_token_valts[valtAddr];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setProfitRate(profitrate);
   }
 
-  function setLoanFee(address valt,uint256 loanfee) onlyOwner public returns(bool){
-    address valt = m_token_valts[token];
+  function setLoanFee(address valtAddr,uint256 loanfee) onlyOwner public returns(bool){
+    address valt = m_token_valts[valtAddr];
     require(valt != address(0),"NO_TOKEN_VALT");
     return IPureValt(valt).setLoanFee(loanfee);
   }
@@ -62,8 +62,8 @@ contract PureFlashValt is SafeOwnable{
       address valt = m_token_valts[token];
       if(valt == address(0)){
         //constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)
-        valt = new PureFlashValt(address(this),token,m_profit_pool,m_profit_rate,m_loan_fee);
-        address addr =  address(valt);
+        PureFlashValt newValt = new PureFlashValt(address(this),token,m_profit_pool,m_profit_rate,m_loan_fee);
+        address addr =  address(newValt);
         m_token_valts[token]  = addr;
         m_valts.push(addr);
       }else{
