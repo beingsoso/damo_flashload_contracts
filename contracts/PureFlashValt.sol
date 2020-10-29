@@ -88,8 +88,8 @@ contract PureFlashValt is ERC20{
 
   //动态利息算法：千分之三*当前借贷量/池子总量
   function minFee(uint256 amount) public view returns(uint256){
-     uint256 balance = m_token.balanceOf(address(this));
-    return m_loan_fee.mul(amount).div(balance).div(MAX_LOAN_FEE);
+     uint256 pool = m_token.balanceOf(address(this));
+    return m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE);
   }
 
   function pureLoan(address dealer,uint256 amount,bytes calldata data) public{
