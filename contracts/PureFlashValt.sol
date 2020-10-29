@@ -50,8 +50,7 @@ contract PureFlashValt is ERC20{
         return m_token.balanceOf(address(this));
     }
     
-    function valtInfo() public view returns(string memory sym,uint256 tvl,uint256 fee,uint256 apy){
-        sym = ERC20Detailed(address(m_token)).symbol();
+    function valtInfo() public view returns(uint256 tvl,uint256 fee,uint256 apy){
         tvl = balance();
         fee = minFee(100*1e18);
         apy = sharePrice().mul(365);
