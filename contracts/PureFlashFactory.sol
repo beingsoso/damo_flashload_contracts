@@ -57,12 +57,7 @@ contract PureFlashFactory is SafeOwnable{
   function valtCount() public view returns(uint256){
     return m_valts.length;
   }
-
-  function valtInfo(address token) public returns(string memory sym,uint256 tvl,uint256 fee,uint256 apy){
-     address valt = m_token_valts[token];
-    require(valt != address(0),"NO_TOKEN_VALT");
-    return IPureValt(valt).valtInfo();
-  }
+ 
   //通用存款方法，存入的时候如果没有对应的保险柜，则自动创建
   function deposit(address token,uint256 amount) public{
       address valt = m_token_valts[token];

@@ -66,9 +66,9 @@
 			"name": "deposit",
 			"outputs": [
 				{
-					"internalType": "bool",
+					"internalType": "uint256",
 					"name": "",
-					"type": "bool"
+					"type": "uint256"
 				}
 			],
 			"stateMutability": "nonpayable",
@@ -135,16 +135,16 @@
 			"inputs": [
 				{
 					"internalType": "uint256",
-					"name": "amount",
+					"name": "shares",
 					"type": "uint256"
 				}
 			],
 			"name": "withdraw",
 			"outputs": [
 				{
-					"internalType": "bool",
+					"internalType": "uint256",
 					"name": "",
-					"type": "bool"
+					"type": "uint256"
 				}
 			],
 			"stateMutability": "nonpayable",

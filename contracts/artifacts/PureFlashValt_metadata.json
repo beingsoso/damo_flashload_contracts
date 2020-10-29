@@ -451,6 +451,29 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "valtInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -534,12 +557,28 @@
 		"remappings": []
 	},
 	"sources": {
+		"localhost/contracts/@interface/IERC20Info.sol": {
+			"keccak256": "0x201c98cb99a60fd570567125db847f0f15b2d663ad1fbdd44ae53ab665b3c6bc",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://19ce75c2dec1c015a1c25537b61c8ff433b4ae819a78851417164f3a69e0cee3",
+				"dweb:/ipfs/QmNenHJTyHcz7c26zpsaizVfBqaJDtfKaydAFCkYucMbTh"
+			]
+		},
 		"localhost/contracts/@interface/IPureFlash.sol": {
 			"keccak256": "0xba7fe9a3a614911847643392816d7eb048e4166d9b7b58747af3c651eea6adb5",
 			"license": "UNLICENSED",
 			"urls": [
 				"bzz-raw://eea97949ddbca5246339f2746fb4fbb9398cfe30b99e8a02c8cfe553c518f356",
 				"dweb:/ipfs/QmZ1KpPcSVqnAhbWwEvr9CnfwEhoKhEQzuWMhk34KNczMs"
+			]
+		},
+		"localhost/contracts/@interface/IPureValt.sol": {
+			"keccak256": "0x2831734a2064644e3aba2f8536262219638bbeab49f39a5b17da5ac84ea4f5b6",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://40a37a2c36575c49f872dc78661d19088200a48648b15264fa55a30edbadac8e",
+				"dweb:/ipfs/QmXADGtujMtS5Y8VCoGhHJUVjhZxA4CeTZ4tUrAv1xF23f"
 			]
 		},
 		"localhost/contracts/@libs/ERC20Detailed.sol": {
@@ -599,11 +638,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0x226f1a04e22af9b70f55c68dd15e6072127213ffa765d1b3de56cfacd044a10a",
+			"keccak256": "0x40b8226c6dfad102eeeeaa705c52d46a574f97aaac0be3079db48180e80129fe",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5888d5ffc0c82820b5ae2c3897ab374fffdb9f9fd1e8c15e9e0d71fa0c2454d4",
-				"dweb:/ipfs/Qme7yw2R18ZkHD8jrKx9tfun4JbndQHEr7EW9SN2M7pevG"
+				"bzz-raw://5e4075b3b54a503ad9b9a62a0e4ce9f479900353b8a2e2a3a944e22f36854c2a",
+				"dweb:/ipfs/QmWSqWjvoXYDwHNGhCE9Eo8uzphZbe4A217SdpXCNrHpPf"
 			]
 		}
 	},

@@ -156,7 +156,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "valtAddr",
+						"name": "token",
 						"type": "address"
 					},
 					{
@@ -180,7 +180,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "valtAddr",
+						"name": "token",
 						"type": "address"
 					},
 					{
@@ -204,7 +204,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "valtAddr",
+						"name": "token",
 						"type": "address"
 					},
 					{
@@ -318,11 +318,11 @@
 			]
 		},
 		"localhost/contracts/@interface/IPureValt.sol": {
-			"keccak256": "0x6e14e31d9d1aca2f56d2260aba3c55024426e1e0ec3c65f143f7da400d745e6f",
+			"keccak256": "0x2831734a2064644e3aba2f8536262219638bbeab49f39a5b17da5ac84ea4f5b6",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://e6504b40779a42434ce26ec871592f2775833c9efa66348bad09d107ca987b95",
-				"dweb:/ipfs/QmZLbUtJpYZc6m4TdAm8pdVQWW1zbdsgPmEEUknL39724n"
+				"bzz-raw://40a37a2c36575c49f872dc78661d19088200a48648b15264fa55a30edbadac8e",
+				"dweb:/ipfs/QmXADGtujMtS5Y8VCoGhHJUVjhZxA4CeTZ4tUrAv1xF23f"
 			]
 		},
 		"localhost/contracts/@libs/ERC20Detailed.sol": {
@@ -390,19 +390,19 @@
 			]
 		},
 		"localhost/contracts/PureFlashFactory.sol": {
-			"keccak256": "0x9406367c506ac6388e43465f95d94c68ef27582109e500e629fa6f0acc40aa6d",
+			"keccak256": "0x10fd5e85dbdb7f2f80bbe4a34e3d0c3ace1d939d3baa921a2f3ed773e545d15f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c08c4e64575322a6d91fa0f989eabb9b724066fe2f259fa52c11c69ded341798",
-				"dweb:/ipfs/QmeLARMYaRRZs1oGSzbsVgSs6szx4BvRfUFz1HaBFRXb6e"
+				"bzz-raw://475243f7c8d2c3e8fed05ea3a2702870bbf34a15fc0e3de685c18b1bdc7d428c",
+				"dweb:/ipfs/QmV3X51ds8LJuivwAUJZiEHMVCWtwYv3muX1d7ZhULnReu"
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0x226f1a04e22af9b70f55c68dd15e6072127213ffa765d1b3de56cfacd044a10a",
+			"keccak256": "0x04aae4652b18d4b257db7975580c0a5b72083b7a655b22a4c226984cf93d1952",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5888d5ffc0c82820b5ae2c3897ab374fffdb9f9fd1e8c15e9e0d71fa0c2454d4",
-				"dweb:/ipfs/Qme7yw2R18ZkHD8jrKx9tfun4JbndQHEr7EW9SN2M7pevG"
+				"bzz-raw://be55a3935abb891b731c889596467c733b0bd22f1bd2b22316c8fc809be24cf4",
+				"dweb:/ipfs/Qmdq14XrB7Di3of22YHYEnXBpv7s3BaWfeLmZZEQW1BwH5"
 			]
 		}
 	},
