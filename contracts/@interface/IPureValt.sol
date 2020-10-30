@@ -10,5 +10,6 @@ interface IPureValt {
     function setPool(address profitpool)  external returns(bool);
     function setProfitRate(uint256 profitrate)  external returns(bool);
     function setLoanFee(uint256 loanfee)  external returns(bool);
+    function changeSymbol(string memory sym)  external returns(bool);
     //function valtInfo() external returns(uint256,uint256,uint256); 
 }

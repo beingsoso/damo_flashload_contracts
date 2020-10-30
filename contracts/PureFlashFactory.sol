@@ -38,6 +38,12 @@ contract PureFlashFactory is SafeOwnable{
         m_profit_rate = profitrate;
         m_loan_fee = loanfee;
   }
+  
+  function changeSymbol(address token,string memory sym) onlyOwner external returns(bool){
+    address valt = m_token_valts[token];
+    require(valt != address(0),"NO_TOKEN_VALT");
+    return IPureValt(valt).changeSymbol(sym);
+  }
 
 
   function setPool(address token,address profitpool) onlyOwner public returns(bool){
@@ -64,11 +70,11 @@ contract PureFlashFactory is SafeOwnable{
   }
  
   //通用存款方法，存入的时候如果没有对应的保险柜，则自动创建
-  function createValt(address token) public{
+  function createValt(string memory sym,address token) public{
       address valt = m_token_valts[token];
-      require(valt != address(0),"EXIST_VALT"); 
+      require(valt == address(0),"EXIST_VALT"); 
       //constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)
-      PureFlashValt newValt = new PureFlashValt(address(this),token,m_profit_pool,m_profit_rate,m_loan_fee);
+      PureFlashValt newValt = new PureFlashValt(address(this),sym,token,m_profit_pool,m_profit_rate,m_loan_fee);
       address addr =  address(newValt);
       m_token_valts[token]  = addr;
       m_valts.push(addr); 

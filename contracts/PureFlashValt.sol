@@ -14,14 +14,16 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   using SafeERC20 for IERC20;
   
   IERC20 m_token;
+  string  m_symbol;
   address m_factory;
   address m_profitpool;
   uint256 m_profit_rate;
   uint256 m_loan_fee;
   uint256 constant MAX_LOAN_FEE = 100*10000;
-  constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)  
+  constructor(address factory,string memory sym,address token,address profitpool,uint256 profitrate,uint256 loadfee)  
   ERC20(string(abi.encodePacked("PFL-", ERC20Detailed(token).name())),
         string(abi.encodePacked("u", ERC20Detailed(token).symbol())) ){
+       m_symbol = sym;
        m_factory = m_factory;
        m_token = IERC20(token);
        m_profitpool = profitpool;
@@ -32,6 +34,12 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
    modifier onlyFactory(){
        require(msg.sender == m_factory,"NEED_FROM_FACTORY");
        _;
+   }
+   
+
+   function changeSymbol(string memory sym) onlyFactory external returns(bool){
+      m_symbol = sym;
+      return true;
    }
 
    function setPool(address profitpool) onlyFactory external returns(bool){
@@ -51,10 +59,13 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         return m_token.balanceOf(address(this));
     }
     
-    function valtInfo() public view returns(uint256 tvl,uint256 fee,uint256 apy){
+    function valtInfo() public view returns(string memory sym,uint256 tvl,uint256 fee,uint256 apy){
+        sym = m_symbol;
         tvl = balance();
-        fee = minFee(100*1e18);
-        apy = sharePrice().mul(365);
+        if(totalSupply() != 0){
+            fee = minFee(100*1e18);
+            apy = sharePrice().mul(365);
+        }
     }
     /**
      * @dev 获取每份基础资产对应的份额
@@ -95,7 +106,7 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   //动态利息算法：千分之三*当前借贷量/池子总量
   function minFee(uint256 amount) public view returns(uint256){
      uint256 pool = m_token.balanceOf(address(this));
-    return m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE);
+    return  m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE);
   }
 
   function pureLoan(address dealer,uint256 amount,bytes calldata data) nonReentrant public{

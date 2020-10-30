@@ -13,6 +13,11 @@
 						"type": "address"
 					},
 					{
+						"internalType": "string",
+						"name": "sym",
+						"type": "string"
+					},
+					{
 						"internalType": "address",
 						"name": "token",
 						"type": "address"
@@ -164,6 +169,25 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "sym",
+						"type": "string"
+					}
+				],
+				"name": "changeSymbol",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -455,6 +479,11 @@
 				"name": "valtInfo",
 				"outputs": [
 					{
+						"internalType": "string",
+						"name": "sym",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "tvl",
 						"type": "uint256"
@@ -630,11 +659,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0x73443d53d981949dc7e1c2d528e783cedaa13afe3cc9558bd86849c30d6ec518",
+			"keccak256": "0xf79ebd9ebae138d24d970f534bc1459873f06ea03cdc5b3747d238ff0cc935d9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c8100c12da6510decbfefa39061c1d92f97194a0fcc19a5b4d6dbedc3e3acb46",
-				"dweb:/ipfs/QmZvAku7KkvhcPzdtvtFWZfDRckUveoqSBoJWbtAYcb2Mi"
+				"bzz-raw://583e6568ebabb9c6364a7ca30de8fa0917f85c572215eabacb763a1cbbf116ba",
+				"dweb:/ipfs/QmeJVvVLqKmpaX6aSVcwhvB8uuEf74GVRvfk1rztHoZHhU"
 			]
 		}
 	},
