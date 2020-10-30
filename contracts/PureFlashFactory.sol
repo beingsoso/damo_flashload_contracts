@@ -59,24 +59,14 @@ contract PureFlashFactory is SafeOwnable{
   }
  
   //通用存款方法，存入的时候如果没有对应的保险柜，则自动创建
-  function deposit(address token,uint256 amount) public{
+  function createValt(address token) public{
       address valt = m_token_valts[token];
-      if(valt == address(0)){
-        //constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)
-        PureFlashValt newValt = new PureFlashValt(address(this),token,m_profit_pool,m_profit_rate,m_loan_fee);
-        address addr =  address(newValt);
-        m_token_valts[token]  = addr;
-        m_valts.push(addr);
-      }else{
-        IPureValt(valt).deposit(amount);
-      }
-  }
-
-  
-  function withdraw(address token,uint256 amount) public{
-    address valt = m_token_valts[token];
-    require(valt != address(0),"NO_TOKEN_VALT");
-    IPureValt(valt).deposit(amount);
-  }
+      require(valt != address(0),"EXIST_VALT"); 
+      //constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)
+      PureFlashValt newValt = new PureFlashValt(address(this),token,m_profit_pool,m_profit_rate,m_loan_fee);
+      address addr =  address(newValt);
+      m_token_valts[token]  = addr;
+      m_valts.push(addr); 
+  } 
 
 }

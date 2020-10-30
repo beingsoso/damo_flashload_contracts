@@ -5,10 +5,11 @@ import "./@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "./@openzeppelin/contracts/math/SafeMath.sol";
+import "./@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "./@interface/IPureFlash.sol";
 import "./@libs/ERC20Detailed.sol";
 
-contract PureFlashValt is ERC20{
+contract PureFlashValt is ERC20,ReentrancyGuard{
   using SafeMath  for uint256;
   using SafeERC20 for IERC20;
   
@@ -19,7 +20,7 @@ contract PureFlashValt is ERC20{
   uint256 m_loan_fee;
   uint256 constant MAX_LOAN_FEE = 100*10000;
   constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)  
-  ERC20(string(abi.encodePacked("flash-", ERC20Detailed(token).name())),
+  ERC20(string(abi.encodePacked("PFL-", ERC20Detailed(token).name())),
         string(abi.encodePacked("u", ERC20Detailed(token).symbol())) ){
        m_factory = m_factory;
        m_token = IERC20(token);
@@ -62,8 +63,8 @@ contract PureFlashValt is ERC20{
         return balance().mul(1e18).div(totalSupply());
     }
   
-  function deposit(uint256 amount) public returns(uint256){
- //将amount数量的fea转入当前池子
+   function deposit(uint256 amount) nonReentrant public returns(uint256){
+  //将amount数量的fea转入当前池子
         m_token.safeTransferFrom(msg.sender, address(this), amount);
         uint256 pool = balance();
          // 份额 = 0
@@ -79,9 +80,9 @@ contract PureFlashValt is ERC20{
         // 为调用者铸造份额
         _mint(msg.sender, shares); 
         return shares;
-  }
+   }
 
-  function withdraw(uint256 shares) public returns(uint256){
+  function withdraw(uint256 shares) nonReentrant public returns(uint256){
  // 当前合约和控制器合约在基础资产的余额 * 份额 / 总量
         uint256 amount = (balance().mul(shares)).div(totalSupply());
         // 销毁份额
@@ -97,7 +98,7 @@ contract PureFlashValt is ERC20{
     return m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE);
   }
 
-  function pureLoan(address dealer,uint256 amount,bytes calldata data) public{
+  function pureLoan(address dealer,uint256 amount,bytes calldata data) nonReentrant public{
     uint256 preBalance = m_token.balanceOf(address(this));
     //把借贷的资产转给贷款人
     m_token.safeTransfer(dealer,amount);

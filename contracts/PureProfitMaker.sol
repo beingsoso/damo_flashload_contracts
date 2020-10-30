@@ -21,23 +21,25 @@ contract PureProfitMaker is SafeOwnable{
     constructor(address token)  { 
        m_token = token;
     }
- 
-    
+
+    function setToken(address token) onlyOwner public{
+         m_token = token;
+    } 
+
      /**社区利润池FEA再流通（多签机制）
      */
      function PFLReFund(uint256 amount) onlyOwner  public returns(bool){
-         //require(IsStoped()==false,"PROFIT_POOL_STOPED");
-         //社区利润回购后的FTR，再次通过任务的方式分配给社区
+         //社区利润回购后的PFL，再次通过任务的方式分配给社区
          address goverance = msg.sender; 
          IERC20(m_token).safeTransfer(goverance,amount);
      }
      
      //2、社区利润池定期再回购FEA接口
-     //exchange 交易所地址，amount，回购的ETH数量
+     //exchange 交易所地址，amount，回购的PFL数量
      function BuyPFL(address exchange,address tokenUse,uint256 amountIn,uint256 minOut) onlyOwner public returns(uint256){
          address[] memory path = new address[](2);  
          path[0]  = tokenUse;
-         path[1] = m_token;    
+         path[1]  = m_token;    
         //对proxy进行额度授权
         IERC20(tokenUse).safeApprove(address(exchange),0);
         IERC20(tokenUse).safeApprove(address(exchange),amountIn);
