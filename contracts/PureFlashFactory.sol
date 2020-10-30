@@ -26,6 +26,11 @@ contract PureFlashFactory is SafeOwnable{
      m_profit_rate = 1000; //10%
      m_loan_fee = 100*30;  //千分之3
   }
+  
+  
+  function setToken(address token) onlyOwner public{
+         m_token = token;
+  } 
 
   //设置创建保险柜的默认参数
   function defaultFee(address profitpool,uint256 profitrate,uint256 loanfee) onlyOwner public{

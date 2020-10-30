@@ -223,6 +223,19 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "setToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "newOwner",
 						"type": "address"
 					}
@@ -375,11 +388,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashFactory.sol": {
-			"keccak256": "0xd4f5dee58d6111c7cc703d20ef35616bd3d9ccaa1f50e3dff2eebf465ba82e2e",
+			"keccak256": "0xc067fa0c0d79a9eab0177c6450ada5eded6b1ea6b620c98698d4484be1c91c4d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5f07e4cb660833fd877a4945d443f544f1b87550d5c64bf55f098a44c02bccdb",
-				"dweb:/ipfs/QmT765skrXvgRS8uLfXEhg5JPC916PtvTvQrKrTMN7kGTg"
+				"bzz-raw://06533ea55525eec6d6a79c33e3b4a5e26eca709f3c95d22ed6b55701bc200b23",
+				"dweb:/ipfs/QmU1sgbKhAprya8NnzjTqJEwevnGKm55GB3pWNXfem8Bam"
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
