@@ -12,9 +12,9 @@ import "./PureFlashValt.sol";
 
 
 contract PureFlashFactory is SafeOwnable{
- 
-   address[] public m_valts;
-   mapping(address=>address) public m_token_valts;
+  using SafeERC20 for IERC20;
+  address[] public m_valts;
+  mapping(address=>address) public m_token_valts;
   //保险柜默认参数
   address m_token;
   address m_profit_pool;
@@ -70,7 +70,7 @@ contract PureFlashFactory is SafeOwnable{
   }
  
   //通用存款方法，存入的时候如果没有对应的保险柜，则自动创建
-  function createValt(string memory sym,address token) public{
+  function createValt(string memory sym,address token,uint256 amount) public{
       address valt = m_token_valts[token];
       require(valt == address(0),"EXIST_VALT"); 
       //constructor(address factory,address token,address profitpool,uint256 profitrate,uint256 loadfee)
@@ -78,6 +78,13 @@ contract PureFlashFactory is SafeOwnable{
       address addr =  address(newValt);
       m_token_valts[token]  = addr;
       m_valts.push(addr); 
+      //deposit
+      if(amount >0){
+          //先把创建者要deposit的金额中转到facotry
+          IERC20(token).safeTransferFrom(msg.sender,address(this),amount);
+          //facotry再为创建者deposit，并且把lp-token给创建者
+          newValt.depositFor(amount,msg.sender);
+      }
   } 
 
 }

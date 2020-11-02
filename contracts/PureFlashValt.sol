@@ -74,8 +74,8 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         return balance().mul(1e18).div(totalSupply());
     }
   
-   function deposit(uint256 amount) nonReentrant public returns(uint256){
-  //将amount数量的fea转入当前池子
+     function depositFor(uint256 amount,address user) nonReentrant public returns(uint256){
+     //将amount数量的fea转入当前池子
         m_token.safeTransferFrom(msg.sender, address(this), amount);
         uint256 pool = balance();
          // 份额 = 0
@@ -89,12 +89,16 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
             shares = (amount.mul(totalSupply())).div(pool);
         }
         // 为调用者铸造份额
-        _mint(msg.sender, shares); 
+        _mint(user, shares); 
         return shares;
    }
 
-  function withdraw(uint256 shares) nonReentrant public returns(uint256){
- // 当前合约和控制器合约在基础资产的余额 * 份额 / 总量
+    function deposit(uint256 amount) nonReentrant public returns(uint256){
+        return depositFor(amount,msg.sender); 
+   }
+
+    function withdraw(uint256 shares) nonReentrant public returns(uint256){
+    // 当前合约和控制器合约在基础资产的余额 * 份额 / 总量
         uint256 amount = (balance().mul(shares)).div(totalSupply());
         // 销毁份额
         _burn(msg.sender, shares); 
