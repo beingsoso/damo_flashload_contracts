@@ -59,8 +59,9 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         return m_token.balanceOf(address(this));
     }
     
-    function valtInfo() public view returns(string memory sym,uint256 tvl,uint256 fee,uint256 apy){
+    function valtInfo() public view returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 apy){
         sym = m_symbol;
+        addr = address(m_token);
         tvl = balance();
         if(totalSupply() != 0){
             fee = minFee(100*1e18);
