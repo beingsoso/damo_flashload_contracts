@@ -20,6 +20,9 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   uint256 m_profit_rate;
   uint256 m_loan_fee;
   uint256 constant MAX_LOAN_FEE = 100*10000;
+  //记录存款数据
+  uint256 m_total_deposits;
+  mapping(address=>uint256) m_users_deposit;
   constructor(address factory,string memory sym,address token,address profitpool,uint256 profitrate,uint256 loadfee)  
   ERC20(string(abi.encodePacked("PFL-", ERC20Detailed(token).name())),
         string(abi.encodePacked("u", ERC20Detailed(token).symbol())) ){
@@ -68,6 +71,17 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
             apy = sharePrice().mul(365);
         }
     }
+
+    //获取某个用户的所有相关信息，便于UI显示
+    function userInfo(address user) public view 
+    returns(string memory sym,address addr,uint256 tvl,uint256 b,uint256 d,uint256 td){
+        sym = m_symbol;
+        addr = address(m_token);
+        tvl = balance();
+        b = m_token.balanceOf(user);
+        d = m_users_deposit[user];
+        td = m_total_deposits;
+    }
     /**
      * @dev 获取每份基础资产对应的份额
      */
@@ -91,6 +105,9 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         }
         // 为调用者铸造份额
         _mint(user, shares); 
+        //保存存款数据
+        m_total_deposits = m_total_deposits.add(amount);
+        m_users_deposit[user] = m_users_deposit[user].add(amount);
         return shares;
    }
 
@@ -100,12 +117,16 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
    }
 
     function withdraw(uint256 shares) nonReentrant public returns(uint256){
-    // 当前合约和控制器合约在基础资产的余额 * 份额 / 总量
+         address user = msg.sender;
+        // 当前合约和控制器合约在基础资产的余额 * 份额 / 总量
         uint256 amount = (balance().mul(shares)).div(totalSupply());
         // 销毁份额
-        _burn(msg.sender, shares); 
+        _burn(user, shares); 
         //打款给用户
-        m_token.safeTransfer(msg.sender, amount);
+        m_token.safeTransfer(user, amount);
+        //更新存款数据(可能有，存款为0，但是利润不为0的情况)，这种情况不能revert       
+        m_total_deposits = m_total_deposits > amount ? m_total_deposits.sub(amount) : 0;
+        m_users_deposit[user] = m_users_deposit[user] > amount ? m_users_deposit[user].sub(amount) : 0;
         return amount;
   }
 
