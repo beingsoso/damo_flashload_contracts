@@ -499,6 +499,50 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "userInfo",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "sym",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tvl",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "d",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "td",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "valtInfo",
 				"outputs": [
@@ -525,6 +569,11 @@
 					{
 						"internalType": "uint256",
 						"name": "apy",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "td",
 						"type": "uint256"
 					}
 				],
@@ -688,11 +737,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0xdc0f8c404cebb5fb018a413a31712c64930a61287f79e19cc5aa73b9212abb93",
+			"keccak256": "0xa14bc6e2d02c60f471a1b6771da6df187fd9a9acc13de2448b8101d2491b64ea",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://870a37f7a4383fd7f4a4ceceb2b24724cde5ee3f0d1baf9625e355c1c08ece5c",
-				"dweb:/ipfs/QmU8xfpgHSc2Uh1mRZVXUnwCiTUZWCmt72t1bPbnCPaxXf"
+				"bzz-raw://1933bff96ba3d568667766dcb35c625a9d4da11844ad06d590c67e6a92274644",
+				"dweb:/ipfs/QmQnA8Akp4nNTejB5j9M2hfaxdeKqJsqfpbR7uRoiwHa21"
 			]
 		}
 	},
