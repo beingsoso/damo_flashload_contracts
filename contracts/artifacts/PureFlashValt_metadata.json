@@ -537,6 +537,11 @@
 						"internalType": "uint256",
 						"name": "td",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "s",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -737,11 +742,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0xa14bc6e2d02c60f471a1b6771da6df187fd9a9acc13de2448b8101d2491b64ea",
+			"keccak256": "0x0964c960f98242ebbb8e4df09445ba57df22db4441f167c8b2d86096911d73a6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1933bff96ba3d568667766dcb35c625a9d4da11844ad06d590c67e6a92274644",
-				"dweb:/ipfs/QmQnA8Akp4nNTejB5j9M2hfaxdeKqJsqfpbR7uRoiwHa21"
+				"bzz-raw://5ac6a312b6cf8ff899483c394a338b1486aa7fde2d733345ff38d6f67e12dbdf",
+				"dweb:/ipfs/QmdRksKmYSCTjKvSzr22mRut8XCyJ7WYxBtfuT4Fyj1RSs"
 			]
 		}
 	},

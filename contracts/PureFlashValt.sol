@@ -64,31 +64,30 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
     
     function valtInfo() public view 
     returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 apy,uint256 td){
-        sym = m_symbol;
+        sym  = m_symbol;
         addr = address(m_token);
-        tvl = balance();
-        if(totalSupply() != 0){
-            fee = minFee(100*1e18);
-            apy = sharePrice().mul(365);
-        }
-        td = m_total_deposits;
+        tvl  = balance();
+        fee  = minFee(100*1e18);
+        apy  = sharePrice().mul(365);
+        td   = m_total_deposits;
     }
 
     //获取某个用户的所有相关信息，便于UI显示
     function userInfo(address user) public view 
-    returns(string memory sym,address addr,uint256 tvl,uint256 b,uint256 d,uint256 td){
-        sym = m_symbol;
+    returns(string memory sym,address addr,uint256 tvl,uint256 b,uint256 d,uint256 td,uint256 s){
+        sym  = m_symbol;
         addr = address(m_token);
-        tvl = balance();
-        b = m_token.balanceOf(user);
-        d = m_users_deposit[user];
-        td = m_total_deposits;
+        tvl  = balance();
+        b    = balanceOf(user);
+        d    = m_users_deposit[user];
+        td   = m_total_deposits;
+        s    = sharePrice();
     }
     /**
      * @dev 获取每份基础资产对应的份额
      */
     function sharePrice() public view returns (uint256) {
-        return balance().mul(1e18).div(totalSupply());
+        return totalSupply() > 0 ? balance().mul(1e18).div(totalSupply()) : 0;
     }
   
      function depositFor(uint256 amount,address user) nonReentrant public returns(uint256){
@@ -135,7 +134,7 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   //动态利息算法：千分之三*当前借贷量/池子总量
   function minFee(uint256 amount) public view returns(uint256){
      uint256 pool = m_token.balanceOf(address(this));
-    return  m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE);
+     return  pool > 0 ? m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE) : 0;
   }
 
   function pureLoan(address dealer,uint256 amount,bytes calldata data) nonReentrant public{
