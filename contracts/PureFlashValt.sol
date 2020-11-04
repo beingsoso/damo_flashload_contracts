@@ -27,7 +27,7 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   ERC20(string(abi.encodePacked("PFL-", ERC20Detailed(token).name())),
         string(abi.encodePacked("u", ERC20Detailed(token).symbol())) ){
        m_symbol = sym;
-       m_factory = m_factory;
+       m_factory = factory;
        m_token = IERC20(token);
        m_profitpool = profitpool;
        m_profit_rate = profitrate;
@@ -62,7 +62,8 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         return m_token.balanceOf(address(this));
     }
     
-    function valtInfo() public view returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 apy){
+    function valtInfo() public view 
+    returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 apy,uint256 td){
         sym = m_symbol;
         addr = address(m_token);
         tvl = balance();
@@ -70,6 +71,7 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
             fee = minFee(100*1e18);
             apy = sharePrice().mul(365);
         }
+        td = m_total_deposits;
     }
 
     //获取某个用户的所有相关信息，便于UI显示
