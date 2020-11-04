@@ -94,7 +94,8 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         return shares;
    }
 
-    function deposit(uint256 amount) nonReentrant public returns(uint256){
+    //这里不应该用nonReentrant
+    function deposit(uint256 amount) /*nonReentrant*/ public returns(uint256){
         return depositFor(amount,msg.sender); 
    }
 
