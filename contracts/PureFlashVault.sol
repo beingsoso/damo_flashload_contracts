@@ -7,9 +7,10 @@ import "./@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "./@openzeppelin/contracts/math/SafeMath.sol";
 import "./@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "./@interface/IPureFlash.sol";
+import "./@interface/IPureVault.sol";
 import "./@libs/ERC20Detailed.sol";
 
-contract PureFlashValt is ERC20,ReentrancyGuard{
+contract PureFlashVault is ERC20,ReentrancyGuard,IPureVault{
   using SafeMath  for uint256;
   using SafeERC20 for IERC20;
   
@@ -42,29 +43,29 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
    }
    
 
-   function changeSymbol(string memory sym) onlyFactory external returns(bool){
+   function changeSymbol(string memory sym) onlyFactory external override returns(bool){
       m_symbol = sym;
       return true;
    }
 
-   function setPool(address profitpool) onlyFactory external returns(bool){
+   function setPool(address profitpool) onlyFactory external override returns(bool){
       m_profitpool = profitpool;
      return true;
    }
-   function setProfitRate(uint256 profitrate) onlyFactory external returns(bool){
+   function setProfitRate(uint256 profitrate) onlyFactory external override returns(bool){
        m_profit_rate = profitrate;
        return true;
    }
-   function setLoanFee(uint256 loanfee)  onlyFactory external returns(bool){
+   function setLoanFee(uint256 loanfee)  onlyFactory external override  returns(bool){
        m_loan_fee = loanfee;
        return true;
    } 
 
-   function balance() public view returns(uint256){
+   function balance() public view override returns(uint256){
         return m_token.balanceOf(address(this));
     }
     
-    function valtInfo() public view 
+    function vaultInfo() public view 
     returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 s,uint256 td){
         sym  = m_symbol;
         addr = address(m_token);
