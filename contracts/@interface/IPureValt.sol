@@ -12,5 +12,6 @@ interface IPureValt {
     function setLoanFee(uint256 loanfee)  external returns(bool);
     function changeSymbol(string memory sym)  external returns(bool);
     //function valtInfo() external returns(uint256,uint256,uint256); 
+    function balance() external returns(uint256);
     function startFlashLoan(address dealer,uint256 amount,bytes calldata userdata) external;
 }
