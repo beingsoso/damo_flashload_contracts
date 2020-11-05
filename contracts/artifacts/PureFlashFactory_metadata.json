@@ -430,11 +430,11 @@
 			]
 		},
 		"localhost/contracts/PureFlashValt.sol": {
-			"keccak256": "0x0964c960f98242ebbb8e4df09445ba57df22db4441f167c8b2d86096911d73a6",
+			"keccak256": "0x59cf2e03664c775e5b9e21a174e8e6737795b48ba587fb94d2354b40795d213f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5ac6a312b6cf8ff899483c394a338b1486aa7fde2d733345ff38d6f67e12dbdf",
-				"dweb:/ipfs/QmdRksKmYSCTjKvSzr22mRut8XCyJ7WYxBtfuT4Fyj1RSs"
+				"bzz-raw://976cd340f1ee504ac03e90b533ca499942f5a8a06682a3944ce04b7e720e8a05",
+				"dweb:/ipfs/QmbDe6MDA6GvDNaaELnjx7iDHzHCno9DZgiTxEthZjQhp6"
 			]
 		}
 	},

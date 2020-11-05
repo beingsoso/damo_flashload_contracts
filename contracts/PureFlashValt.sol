@@ -147,12 +147,13 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
      return  pool > 0 ? m_loan_fee.mul(amount).div(pool).div(MAX_LOAN_FEE) : 0;
   }
 
-  function pureLoan(address dealer,uint256 amount,bytes calldata data) nonReentrant public{
+  function startFlashLoan(address dealer,uint256 amount,bytes calldata data) nonReentrant public{
     uint256 preBalance = m_token.balanceOf(address(this));
     //把借贷的资产转给贷款人
     m_token.safeTransfer(dealer,amount);
     //调用借贷者自己的借贷函数
-    IPureFlash(dealer).OnFlashLoan(address(m_token),amount, data);
+    uint256 rAmount = amount.add(minFee(amount));
+    IPureFlash(dealer).OnFlashLoan(address(m_token),amount,rAmount, data);
     //开始检查是否返款
     uint256 curBalance = m_token.balanceOf(address(this));
     uint256 profit = curBalance.sub(preBalance);
