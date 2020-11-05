@@ -23,6 +23,8 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
   //记录存款数据
   uint256 m_total_deposits;
   mapping(address=>uint256) m_users_deposit;
+  //记录用户的历史利润
+  mapping(address=>uint256) m_users_hprofit;
   constructor(address factory,string memory sym,address token,address profitpool,uint256 profitrate,uint256 loadfee)  
   ERC20(string(abi.encodePacked("PFL-", ERC20Detailed(token).name())),
         string(abi.encodePacked("u", ERC20Detailed(token).symbol())) ){
@@ -63,18 +65,18 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
     }
     
     function valtInfo() public view 
-    returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 apy,uint256 td){
+    returns(string memory sym,address addr,uint256 tvl,uint256 fee,uint256 s,uint256 td){
         sym  = m_symbol;
         addr = address(m_token);
         tvl  = balance();
         fee  = minFee(100*1e18);
-        apy  = sharePrice().mul(365);
+        s    = sharePrice();
         td   = m_total_deposits;
     }
 
     //获取某个用户的所有相关信息，便于UI显示
     function userInfo(address user) public view 
-    returns(string memory sym,address addr,uint256 tvl,uint256 b,uint256 d,uint256 td,uint256 s){
+    returns(string memory sym,address addr,uint256 tvl,uint256 b,uint256 d,uint256 td,uint256 s,uint256 hp){
         sym  = m_symbol;
         addr = address(m_token);
         tvl  = balance();
@@ -82,6 +84,7 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         d    = m_users_deposit[user];
         td   = m_total_deposits;
         s    = sharePrice();
+        hp    = m_users_hprofit[user];
     }
     /**
      * @dev 获取每份基础资产对应的份额
@@ -125,9 +128,16 @@ contract PureFlashValt is ERC20,ReentrancyGuard{
         _burn(user, shares); 
         //打款给用户
         m_token.safeTransfer(user, amount);
+        //记录更改前的deposit值
+        uint256 oldDeposit = m_users_deposit[user];
+         //当取出金额大于本金时，记录历史利润
+        if(amount > oldDeposit){
+            m_users_hprofit[user] =  m_users_hprofit[user].add(amount.sub(oldDeposit));
+        }
         //更新存款数据(可能有，存款为0，但是利润不为0的情况)，这种情况不能revert       
         m_total_deposits = m_total_deposits > amount ? m_total_deposits.sub(amount) : 0;
-        m_users_deposit[user] = m_users_deposit[user] > amount ? m_users_deposit[user].sub(amount) : 0;
+        m_users_deposit[user] = oldDeposit > amount ? oldDeposit.sub(amount) : 0;
+       
         return amount;
   }
 
